@@ -1,0 +1,18 @@
+<h1>Account Information for User '{{user}}'</h1>
+<p>Request status code: {{statusDesc status}}</p>
+
+{{#ifCond status '==' 200}}
+<p>Auth result: {{dat.result}}</p>
+<h2>Accounts:</h2>
+  {{#if dat.accounts}}
+    <ul>
+      {{#each dat.accounts}}
+      <li>{{decodeURI this}}</li>
+      {{/each}}
+  	</ul>
+  {{else}}
+    <p>No accounts</p>
+  {{/if}}
+{{else}}
+  Message: {{dat}}
+{{/ifCond}}
